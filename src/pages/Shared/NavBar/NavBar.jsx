@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from "../../../hooks/useCart";
@@ -15,24 +15,24 @@ const NavBar = () => {
     }
 
     const navOptions = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/menu">Our Menu</Link></li>
-        <li><Link to="/order/salad">Order Food</Link></li>
-        <li><Link to="/secret">Secret</Link></li>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/menu">Our Menu</NavLink></li>
+        <li><NavLink to="/order/salad">Order Food</NavLink></li>
+        <li><NavLink to="/secret">Secret</NavLink></li>
         <li>
-            <Link to="/dashboard/cart">
+            <NavLink to="/dashboard/cart">
                 <button className="btn">
                     <FaShoppingCart className="mr-2"></FaShoppingCart>
                     <div className="badge badge-secondary">+{cart.length}</div>
                 </button>
-            </Link>
+            </NavLink>
         </li>
         {
             user ? <>
                 {/* <span>{user?.displayName}</span> */}
                 <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
             </> : <>
-                <li><Link to="/login">Login</Link></li>
+                <li><NavLink to="/login">Login</NavLink></li>
             </>
         }
     </>
@@ -52,12 +52,12 @@ const NavBar = () => {
                     <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 items-center">
                         {navOptions}
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                    <a className="btn">Get Started</a>
                 </div>
             </div>
         </>
