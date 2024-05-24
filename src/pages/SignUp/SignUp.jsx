@@ -62,6 +62,13 @@ const SignUp = () => {
                                 <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
                                 {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                             </div>
+                            {/* <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo</span>
+                                </label>
+                                <input type="file"  {...register("photo", { required: true })} placeholder="Photo" className="flex items-center" />
+                                {errors.photo && <span className="text-red-600">Photo is required</span>}
+                            </div> */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -91,7 +98,7 @@ const SignUp = () => {
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p><small>Already have an account <Link to="/login">Login</Link></small></p>
+                        <p className="text-center"><small>Already have an account <Link to="/login">Login</Link></small></p>
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@ const Testimonials = () => {
                 heading={'Testimonials'}
             ></SectionTitle>
 
-            <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+            <Swiper navigation={true} loop={true} modules={[Navigation]} className="mySwiper">
 
                 {
                     reviews.map(review => <SwiperSlide

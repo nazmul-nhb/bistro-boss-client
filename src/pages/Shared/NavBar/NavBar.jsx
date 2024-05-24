@@ -30,7 +30,8 @@ const NavBar = () => {
         {
             user ? <>
                 {/* <span>{user?.displayName}</span> */}
-                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                <li className="rounded-lg"><img className="w-16 h-16 rounded-lg" src={user.photoURL} alt={user.displayName} title={user.displayName} /></li>
+                <li><button onClick={handleLogOut} className="btn btn-ghost">LogOut</button></li>
             </> : <>
                 <li><NavLink to="/login">Login</NavLink></li>
             </>
