@@ -5,12 +5,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2'
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic();
 
     const from = location.state?.from?.pathname || "/";
     console.log('state in the location login page', location.state)
@@ -29,6 +31,19 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                const userInfo = { name: user.displayName, email: user.email };
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'User Added in DB!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
                 Swal.fire({
                     title: 'User Login Successful.',
                     showClass: {
